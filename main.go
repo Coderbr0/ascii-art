@@ -2,16 +2,31 @@ package main
 
 import "fmt"
 
+/*func ReadFile() []string {
+	var fileInput []string
+	file, err := os.Open(os.Args[1]) // We do this first to open the file
+	if err != nil {
+		fmt.Println("Invalid Input") // Alternative with fmt.Println("Invalid input. The named file does not exist"); a descriptive message may make it easier for the user to understand the error; go run main.go samp.txt => Invalid Input
+	}
+*/
 func main() {
-	m := make(map[int]string)
-	m[72] = "H"
-	m[101] = "e"
-	m[108] = "l"
-	m[108] = "l"
-	m[111] = "o"
+	// m := make(map[int][]string)
 
-	fmt.Println(m[72], m[101], m[108], m[108], m[111])
-	fmt.Println(m)
+	a := []string{"           ","    /\\     ", "   /  \\    ", "  / /\\ \\   ", " / ____ \\  ", "/_/    \\_\\ ", "           ", "           "}
+	// d := []string{"Hel", "S", "An", "Mam"}
+// fmt.Println(a[0])
+// fmt.Println(a[1])
+// fmt.Println(a[2])
+
+for i := range a {
+	fmt.Println(a[i] + a[i]) 
+}
+	// m[1] = s
+	// m[6] = d
+
+
+	// fmt.Println(m[6][2])
+	
 
 	//ascii-art
 }
