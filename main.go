@@ -1,15 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"bufio"
+)
 
-/*func ReadFile() []string {
+func ReadFile() []string {
 	var fileInput []string
-	file, err := os.Open(os.Args[1]) // We do this first to open the file
+	file, err := os.Open(os.Args[1])
 	if err != nil {
-		fmt.Println("Invalid Input") // Alternative with fmt.Println("Invalid input. The named file does not exist"); a descriptive message may make it easier for the user to understand the error; go run main.go samp.txt => Invalid Input
+		fmt.Println("Invalid input. The named file does not exist")
 	}
-*/
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		fileInput = append(fileInput, scanner.Text())
+	}
+	return fileInput
+}
+
 func main() {
+	strArr := ReadFile()
+	fmt.Println(strArr)
 	// m := make(map[int][]string)
 
 	a := []string{"           ","    /\\     ", "   /  \\    ", "  / /\\ \\   ", " / ____ \\  ", "/_/    \\_\\ ", "           ", "           "}
@@ -19,7 +32,7 @@ func main() {
 // fmt.Println(a[2])
 
 for i := range a {
-	fmt.Println(a[i] + a[i]) 
+	fmt.Println(a[i]) 
 }
 	// m[1] = s
 	// m[6] = d
@@ -28,7 +41,7 @@ for i := range a {
 	// fmt.Println(m[6][2])
 	
 
-	//ascii-art
+	
 }
 
 
