@@ -12,6 +12,8 @@ func main() {
 
 	fmt.Println(m[72], m[101], m[108], m[108], m[111])
 	fmt.Println(m)
+
+	//ascii-art
 }
 
 
