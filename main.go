@@ -1,6 +1,18 @@
 package main
 
-func main() {}
+import "fmt"
+
+func main() {
+	m := make(map[int]string)
+	m[72] = "H"
+	m[101] = "e"
+	m[108] = "l"
+	m[108] = "l"
+	m[111] = "o"
+
+	fmt.Println(m[72], m[101], m[108], m[108], m[111])
+	fmt.Println(m)
+}
 
 
 /*
@@ -18,7 +30,7 @@ _, ok := m["James"] // Checking if item exists in a map
 fmt.Println(ok)
 fmt.Println(m["James"])
 }
-
+-------------------------------
 Alternative syntax:
 
 
@@ -34,4 +46,21 @@ fmt.Println(m["Amy"])
 delete(m, "James")
 fmt.Println(m["James"])
 }
+-------------------------------
+package main
+
+import "fmt"
+
+func main() {
+	m := make(map[int]string)
+	m[72] = "H"
+	m[101] = "e"
+	m[108] = "l"
+	m[108] = "l"
+	m[111] = "o"
+
+	fmt.Println(m[72], m[101], m[108], m[108], m[111])
+	fmt.Println(m)
+}
+
 */
