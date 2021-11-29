@@ -21,18 +21,29 @@ func ReadFile() []string {
 }
 
 func main() {
-	strArr := ReadFile()
-	fmt.Println(strArr)
-	// m := make(map[int][]string)
-
-	a := []string{"           ","    /\\     ", "   /  \\    ", "  / /\\ \\   ", " / ____ \\  ", "/_/    \\_\\ ", "           ", "           "}
+	//strArr := ReadFile()
+	m := make(map[int][]string)
+	m[1] = []string{"      ", "      ", "      ", "      ", "      ", "      ", "      ", "      "}
+	m[2] = []string{" _  ", "| | ", "| | ", "| | ", "|_| ", "(_) ", "    ", "    "}
+	m[3] = []string{"", "", "", "", "", "", "", ""}
+	m[4] = []string{"", "", "", "", "", "", "", ""}
+	m[34] = []string{"           ","    /\\     ", "   /  \\    ", "  / /\\ \\   ", " / ____ \\  ", "/_/    \\_\\ ", "           ", "           "} // Alternative to for loop: fmt.Println(m[34][0]) fmt.Println(m[34][1]) fmt.Println(m[34][2])
+	
 	// d := []string{"Hel", "S", "An", "Mam"}
 // fmt.Println(a[0])
 // fmt.Println(a[1])
 // fmt.Println(a[2])
 
-for i := range a {
-	fmt.Println(a[i]) 
+for i := range m[1] {
+	fmt.Println(m[1][i]) 
+}
+
+for i := range m[2] {
+	fmt.Println(m[2][i]) 
+}
+
+for i := range m[34] {
+	fmt.Println(m[34][i]) 
 }
 	// m[1] = s
 	// m[6] = d
