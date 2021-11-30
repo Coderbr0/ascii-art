@@ -6,6 +6,23 @@ import (
 	"bufio"
 )
 
+func ReadFile() map[int][]string {
+	var fileInput map[int][]string
+	file, err := os.Open(os.Args[1])
+	if err != nil {
+		fmt.Println("Invalid input. The named file does not exist")
+	}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		//fileInput = append(fileInput, scanner.Text())
+		fileInput[count] = append(fileInput[count], scanner.Text())
+	}
+	return fileInput
+}
+
+
+/*
 func ReadFile() []string {
 	var fileInput []string
 	file, err := os.Open(os.Args[1])
@@ -19,7 +36,7 @@ func ReadFile() []string {
 	}
 	return fileInput
 }
-
+*/
 func main() {
 	//strArr := ReadFile()
 	m := make(map[int][]string)
