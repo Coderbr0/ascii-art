@@ -8,6 +8,7 @@ import (
 
 func ReadFile() map[int][]string {
 	var fileInput map[int][]string
+	count := 32
 	file, err := os.Open(os.Args[1])
 	if err != nil {
 		fmt.Println("Invalid input. The named file does not exist")
@@ -15,7 +16,8 @@ func ReadFile() map[int][]string {
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		//fileInput = append(fileInput, scanner.Text())
+		//fileInput = append(fileInput, scanner.Text()) - we cannot append to a map but we can append to slices; fileInput is of type map[int][]string; (type map)
+		fileInput[count] 
 		fileInput[count] = append(fileInput[count], scanner.Text())
 	}
 	return fileInput
@@ -38,7 +40,7 @@ func ReadFile() []string {
 }
 */
 func main() {
-	//strArr := ReadFile()
+	ReadFile()
 	m := make(map[int][]string)
 	m[1] = []string{"      ", "      ", "      ", "      ", "      ", "      ", "      ", "      "}
 	m[2] = []string{" _  ", "| | ", "| | ", "| | ", "|_| ", "(_) ", "    ", "    "}
