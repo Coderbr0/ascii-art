@@ -6,7 +6,7 @@ import (
 	"bufio"
 )
 
-func ReadFile() map[int][]string {
+func ReadFile() map[int][]string { // We want to return a map for simplicity
 	fileInput := make(map[int][]string) // Alternative syntax: var fileInput map[int][]string
 	count := 32 // In ascii manual (man ascii in terminal) integer 32 (decimal value) represents space (line 2 to 9 in standard.txt file)
 	file, err := os.Open(os.Args[1])
@@ -16,7 +16,7 @@ func ReadFile() map[int][]string {
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		// fileInput = append(fileInput, scanner.Text()) - we cannot append to a map but we can append to slices; fileInput is of type map[int][]string; (type map)
+		// fileInput = append(fileInput, scanner.Text()) - we cannot append to a map but we can append to slices; fileInput is of type map[int][]string
 		fileInput[count] 
 		fileInput[count] = append(fileInput[count], scanner.Text())
 	}
