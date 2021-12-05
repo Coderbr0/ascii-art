@@ -7,23 +7,27 @@ import (
 )
 
 func ReadFile() map[int][]string { // We want to return a map for simplicity
-	fileInput := make(map[int][]string) // Alternative syntax: var fileInput map[int][]string
-	count := 32 // In ascii manual (man ascii in terminal) integer 32 (decimal value) represents space (line 2 to 9 in standard.txt file)
-	firstLine := false // We want to ignore the first line as it's blank in standard.txt file
-	file, err := os.Open(os.Args[1]) // go run main.go standard.txt; standard.txt would be 1st argument in this case
+	file, err := os.Open(os.Args[1]) // go run main.go standard.txt; standard.txt would be 1st argument in this case; alternatively we can use file, err := os.Open("standard.txt")
 	if err != nil {
 		fmt.Println("Invalid input. The named file does not exist")
 	}
 	defer file.Close() // To close file is good practice; defer allows for all operations to be carried out before closing file
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		if scanner.Text() == "" && firstLine {
-			count++
-		} else if firstLine {
+	scanner := bufio.NewScanner(file) // Scans the file and calls it "scanner"
+	fileInput := make(map[int][]string) // Alternative syntax: var fileInput map[int][]string
+	firstLine := true // We want to ignore the first line as it's empty in standard.txt file; checks for first line; see line 24
+	count := 32 // In ascii manual (man ascii in terminal) integer 32 (decimal value) represents space (line 2 to 9 in standard.txt file)
+	// The first character is rune 32; (maybe use rune instead of int?)
+	inputScanner := bufio.NewScanner(os.Stdin) // Stdin is input on command line; standard input
+	fmt.Println("Please input what you would like to convert: ")
+	inputScanner.Scan() // This scans user input for word to convert
+	for scanner.Scan() { // Scans the variable named scanner
+		if scanner.Text() == "" && !firstLine { // If empty string and is not first line
+			count++		// Increase ascii value
+		} else if !firstLine { // If not first line append map with ascii char and its values from the scanner
 			fileInput[count] = append(fileInput[count], scanner.Text()) // fileInput = append(fileInput, scanner.Text()) - we cannot append to a map but we can append to slices; fileInput is of type map[int][]string
 		} 
-	firstLine = true  //fmt.Println(fileInput)
-	}
+	firstLine = false // ???Sets first line to false and is placed outside loop to stop ending the loop early
+	} // ask Karolis line 29 and 30 of his code
 	return fileInput
 }
 
