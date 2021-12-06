@@ -15,83 +15,101 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	scanner := bufio.NewScanner(file) // Scans the file and calls it "scanner"
 	fileInput := make(map[int][]string) // Alternative syntax: var fileInput map[int][]string
 	firstLine := true // We want to ignore the first line as it's empty in standard.txt file; checks for first line; see line 24
-	count := 32 // In ascii manual (man ascii in terminal) integer 32 (decimal value) represents space (line 2 to 9 in standard.txt file)
-	// The first character is rune 32; (maybe use rune instead of int?)
+	count := 32 // In ascii manual (man ascii in terminal) integer 32 (decimal value) represents space (line 2 to 9 in standard.txt file); the first character is rune 32; we could use fileInput := make(map[rune][]string) with slight changes to code elsewhere; there are 95 characters to print (dec value 32 - 126 in ascii manual)
 	inputScanner := bufio.NewScanner(os.Stdin) // Stdin is input on command line; standard input
 	fmt.Println("Please input what you would like to convert: ")
 	inputScanner.Scan() // This scans user input for word to convert
+	//userInput := inputScanner.Text() // This creates the variable equal to user input; returns a string
+	//var emptySlice []string // Declaring an empty slice of string to use; we can then append to it later
 	for scanner.Scan() { // Scans the variable named scanner
 		if scanner.Text() == "" && !firstLine { // If empty string and is not first line
 			count++		// Increase ascii value
 		} else if !firstLine { // If not first line append map with ascii char and its values from the scanner
 			fileInput[count] = append(fileInput[count], scanner.Text()) // fileInput = append(fileInput, scanner.Text()) - we cannot append to a map but we can append to slices; fileInput is of type map[int][]string
 		} 
-	firstLine = false // ???Sets first line to false and is placed outside loop to stop ending the loop early
-	} // ask Karolis line 29 and 30 of his code
+	firstLine = false // Sets first line to false and is placed outside loop to stop ending the loop early; allows append to work
+	}
 	return fileInput
 }
-
+// If we are using fileInput := make(map[int][]string) and therefore have a map, why would var emptySlice []string be required? Can't we just print strings to a nil map instead?
+// Is return fileInput on line 32 required?
 
 /*
-func ReadFile() []string {
-	var fileInput []string
-	file, err := os.Open(os.Args[1])
-	if err != nil {
-		fmt.Println("Invalid input. The named file does not exist")
+for _, convert := range userInput {
+		// creates a for range loop based on user input
+		Toconvert = append(Toconvert, string(convert))
+		// appends individual characters to a slice of runes
 	}
-	defer file.Close()
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		fileInput = append(fileInput, scanner.Text())
+	//sort.Ints(fileMap)
+	for index, character := range fileMap {
+		// creates a for range loop the lenght of the map
+		// for _, letter:= range Toconvert{
+		for i := 0; i < len(Toconvert); i++ {
+			// fmt.Println(Toconvert)
+			// runs a for range loop, in the lenght of how many characters to convert
+
+			//	fmt.Println("number", number, "index", index)
+			if int(Toconvert[i][0]) == index {
+				// if the character to convert == the individual key in the map
+				for i := 0; i < 8; i++ {
+					// creates a for loop to print out each line, less than 8 as there are only 8 lines per character
+					fmt.Println(character[i])
+				}
+			}
+			//	}
+		}
 	}
-	return fileInput
 }
 */
 func main() {
 	ReadFile()
-	// m := make(map[int][]string)
-	// m[1] = []string{"      ", "      ", "      ", "      ", "      ", "      ", "      ", "      "}
-	// m[2] = []string{" _  ", "| | ", "| | ", "| | ", "|_| ", "(_) ", "    ", "    "}
-	// m[3] = []string{"", "", "", "", "", "", "", ""}
-	// m[4] = []string{"", "", "", "", "", "", "", ""}
-	// m[34] = []string{"           ","    /\\     ", "   /  \\    ", "  / /\\ \\   ", " / ____ \\  ", "/_/    \\_\\ ", "           ", "           "} // Alternative to for loop: fmt.Println(m[34][0]) fmt.Println(m[34][1]) fmt.Println(m[34][2])
-	
-	// for i := 0; i < 8; i++ {
-	// 	fmt.Println(m[34][i])
-	// }
-
-	// for i := range map[int][]string {
-	//  	fmt.Println(map[int][]string[i]) 
-	// }
-
-	// d := []string{"Hel", "S", "An", "Mam"}
-// fmt.Println(a[0])
-// fmt.Println(a[1])
-// fmt.Println(a[2])
-
-// for i := range m[1] {
-// 	fmt.Println(m[1][i]) 
-// }
-
-// for i := range m[2] {
-// 	fmt.Println(m[2][i]) 
-// }
-
-// for i := range m[34] {
-// 	fmt.Println(m[34][i]) 
-// }
-	// m[1] = s
-	// m[6] = d
-
-
-	// fmt.Println(m[6][2])
-	
-
-	
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
+package main
+
+import "fmt"
+
+func main() {
+m := make(map[int][]string)
+m[1] = []string{"      ", "      ", "      ", "      ", "      ", "      ", "      ", "      "}
+m[2] = []string{" _  ", "| | ", "| | ", "| | ", "|_| ", "(_) ", "    ", "    "}
+m[3] = []string{"", "", "", "", "", "", "", ""}
+m[4] = []string{"", "", "", "", "", "", "", ""}
+m[34] = []string{"           ","    /\\     ", "   /  \\    ", "  / /\\ \\   ", " / ____ \\  ", "/_/    \\_\\ ", "           ", "           "} // Alternative to for loop: fmt.Println(m[34][0]) fmt.Println(m[34][1]) fmt.Println(m[34][2])
+	
+	for i := 0; i < 8; i++ {
+	fmt.Println(m[2][i])
+	}
+-------------------------------
+Alternative syntax:
+
+	for i := range m[34] {
+	fmt.Println(m[34][i]) 
+	}
+}
+-------------------------------
 package main
 
 import "fmt"
@@ -109,7 +127,6 @@ fmt.Println(m["James"])
 -------------------------------
 Alternative syntax:
 
-
 package main
 
 import "fmt"
@@ -118,8 +135,10 @@ func main() {
 m := map[string]int{
 "James": 42,
 "Amy":   16}
-fmt.Println(m["Amy"])
+fmt.Println(m["Amy"], m["James"])
 delete(m, "James")
+_, ok := m["James"] // Checking if item exists in a map
+fmt.Println(ok)
 fmt.Println(m["James"])
 }
 -------------------------------
@@ -138,5 +157,4 @@ func main() {
 	fmt.Println(m[72], m[101], m[108], m[108], m[111])
 	fmt.Println(m)
 }
-
 */
