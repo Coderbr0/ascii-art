@@ -97,7 +97,7 @@ m[1] = []string{"      ", "      ", "      ", "      ", "      ", "      ", "   
 m[2] = []string{" _  ", "| | ", "| | ", "| | ", "|_| ", "(_) ", "    ", "    "}
 m[3] = []string{"", "", "", "", "", "", "", ""}
 m[4] = []string{"", "", "", "", "", "", "", ""}
-m[34] = []string{"           ","    /\\     ", "   /  \\    ", "  / /\\ \\   ", " / ____ \\  ", "/_/    \\_\\ ", "           ", "           "} // Alternative to for loop: fmt.Println(m[34][0]) fmt.Println(m[34][1]) fmt.Println(m[34][2])
+m[34] = []string{"           ","    /\\     ", "   /  \\    ", "  / /\\ \\   ", " / ____ \\  ", "/_/    \\_\\ ", "           ", "           "} // Alternative to for loop: fmt.Println(m[34][0]) fmt.Println(m[34][1]) fmt.Println(m[34][2]) up to fmt.Println(m[34][7])
 	
 	for i := 0; i < 8; i++ {
 	fmt.Println(m[2][i])
