@@ -6,6 +6,10 @@ import (
 	"bufio"
 )
 
+func main() {
+	ReadFile()
+}
+
 func ReadFile() map[int][]string { // We want to return a map for simplicity
 	file, err := os.Open(os.Args[1]) // go run main.go standard.txt; standard.txt would be 1st argument in this case; alternatively we can use file, err := os.Open("standard.txt")
 	if err != nil {
@@ -19,8 +23,8 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	inputScanner := bufio.NewScanner(os.Stdin) // Stdin is input on command line; standard input
 	fmt.Println("Please input what you would like to convert: ")
 	inputScanner.Scan() // This scans user input for word to convert
-	//userInput := inputScanner.Text() // This creates the variable equal to user input; returns a string
-	//var emptySlice []string // Declaring an empty slice of string to use; we can then append to it later
+	userInput := inputScanner.Text() // This creates the variable equal to user input; returns a string
+	var emptySlice []string // Declaring an empty slice of string to use; we can then append to it later
 	for scanner.Scan() { // Scans the variable named scanner
 		if scanner.Text() == "" && !firstLine { // If empty string and is not first line
 			count++		// Increase ascii value
@@ -30,59 +34,23 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	firstLine = false // Sets first line to false and is placed outside loop to stop ending the loop early; allows append to work
 	}
 	return fileInput
-}
 // If we are using fileInput := make(map[int][]string) and therefore have a map, why would var emptySlice []string be required? Can't we just print strings to a nil map instead?
 // Is return fileInput on line 32 required?
-
-/*
-for _, convert := range userInput {
-		// creates a for range loop based on user input
-		Toconvert = append(Toconvert, string(convert))
-		// appends individual characters to a slice of runes
-	}
-	//sort.Ints(fileMap)
-	for index, character := range fileMap {
-		// creates a for range loop the lenght of the map
-		// for _, letter:= range Toconvert{
-		for i := 0; i < len(Toconvert); i++ {
-			// fmt.Println(Toconvert)
-			// runs a for range loop, in the lenght of how many characters to convert
-
-			//	fmt.Println("number", number, "index", index)
-			if int(Toconvert[i][0]) == index {
-				// if the character to convert == the individual key in the map
-				for i := 0; i < 8; i++ {
-					// creates a for loop to print out each line, less than 8 as there are only 8 lines per character
-					fmt.Println(character[i])
+	for _, convertRune := range userInput { // Creates a for range loop based on user input; by default when iterating over a string, we obtain value as a rune
+		emptySlice = append(emptySlice, string(convertRune)) // Casting individual characters (runes) to a string then appending to a slice of string
+	} 
+	for index, character := range fileMap { // creates a for range loop the lenght of the map // 
+		for _, letter:= range Toconvert {
+			for i := 0; i < len(Toconvert); i++ { // fmt.Println(Toconvert)	// runs a for range loop, in the lenght of how many characters to convert //	fmt.Println("number", number, "index", index)
+				if int(Toconvert[i][0]) == index { // if the character to convert == the individual key in the map
+					for i := 0; i < 8; i++ { // creates a for loop to print out each line, less than 8 as there are only 8 lines per character
+						fmt.Println(character[i])
+					}
 				}
+		
 			}
-			//	}
 		}
 	}
-}
-*/
-func main() {
-	ReadFile()
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
