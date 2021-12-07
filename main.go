@@ -33,16 +33,19 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 		} 
 	firstLine = false // Sets first line to false and is placed outside loop to stop ending the loop early; allows append to work
 	}
-	return fileInput
+	//QUESTIONS:
 // If we are using fileInput := make(map[int][]string) and therefore have a map, why would var emptySlice []string be required? Can't we just print strings to a nil map instead?
 // Is return fileInput on line 32 required?
+// Is func ReadFile() map[int][]string with return fileInput required? What's the difference?
 	for _, convertRune := range userInput { // Creates a for range loop based on user input; by default when iterating over a string, we obtain value as a rune
 		emptySlice = append(emptySlice, string(convertRune)) // Casting individual characters (runes) to a string then appending to a slice of string
-	} 
-	for index, character := range fileMap { // creates a for range loop the lenght of the map // 
-		for _, letter:= range Toconvert {
-			for i := 0; i < len(Toconvert); i++ { // fmt.Println(Toconvert)	// runs a for range loop, in the lenght of how many characters to convert //	fmt.Println("number", number, "index", index)
-				if int(Toconvert[i][0]) == index { // if the character to convert == the individual key in the map
+	}
+	for index, character := range fileInput { // Creates a for range loop the length of the map
+		fmt.Println(index)
+		for _, word := range emptySlice {
+			for i := 0; i < len(emptySlice); i++ { // runs a for range loop, in the lenght of how many characters to convert //	fmt.Println("number", number, "index", index)
+			fmt.Println(emptySlice)	
+			if int(emptySlice[i][0]) == index { // if the character to convert == the individual key in the map
 					for i := 0; i < 8; i++ { // creates a for loop to print out each line, less than 8 as there are only 8 lines per character
 						fmt.Println(character[i])
 					}
@@ -51,6 +54,8 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 			}
 		}
 	}
+	return fileInput
+}
 
 
 
