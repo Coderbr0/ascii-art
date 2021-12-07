@@ -40,7 +40,7 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	for _, convertRune := range userInput { // Creates a for range loop based on user input; by default when iterating over a string, we obtain value as a rune
 		emptySlice = append(emptySlice, string(convertRune)) // Casting individual characters (runes) to a string then appending to a slice of string
 	}
-	for index, character := range fileInput { // Creates a for range loop the length of the map; in this case, index is key of map and character is value of map
+	for index := range fileInput { // Creates a for range loop the length of the map; in this case, index is key of map and character is value of map
 		fmt.Println(index)
 		for _, character := range emptySlice {
 			for i := 0; i < len(emptySlice); i++ { // runs a for range loop, in the lenght of how many characters to convert //	fmt.Println("number", number, "index", index)
