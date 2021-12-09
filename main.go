@@ -18,7 +18,7 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	defer file.Close() // To close file is good practice; defer allows for all operations to be carried out before closing file
 	scanner := bufio.NewScanner(file) // Scans the file and calls it "scanner"
 	fileInput := make(map[int][]string) // Alternative syntax: var fileInput map[int][]string
-	firstLine := true // We want to ignore the first line as it's empty in standard.txt file; checks for first line; see line 24
+	firstLine := true // We want to ignore the first line as it's empty in standard.txt file; checks for first line; see !firstLine notation
 	count := 32 // In ascii manual (man ascii in terminal) integer 32 (decimal value) represents space (line 2 to 9 in standard.txt file); the first character is rune 32; we could use fileInput := make(map[rune][]string) with slight changes to code elsewhere; there are 95 characters to print (dec value 32 - 126 in ascii manual)
 	inputScanner := bufio.NewScanner(os.Stdin) // Stdin is input on command line; standard input
 	fmt.Println("Please input what you would like to convert: ")
