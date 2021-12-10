@@ -11,7 +11,7 @@ func main() {
 }
 
 func ReadFile() map[int][]string { // We want to return a map for simplicity
-	// var emptySlice []string // Declaring an empty slice of string to use; we can then append to it later
+	var emptySlice []string // Declaring an empty slice of string to use; we can then append to it later
 	fileInput := make(map[int][]string) // Alternative syntax: var fileInput map[int][]string
 	file, err := os.Open(os.Args[1])    // go run main.go standard.txt; standard.txt would be 1st argument in this case; alternatively we can use file, err := os.Open("standard.txt")
 	if err != nil {
@@ -23,19 +23,63 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	// fmt.Println("Please input what you would like to convert: ")
 	// inputScanner.Scan() // This scans user input for word to convert
 	// userInput := inputScanner.Text() // This creates the variable equal to user input; returns a string
-	count := 32          // In ascii manual (man ascii in terminal) integer 32 (decimal value) represents space (line 2 to 9 in standard.txt file); the first character is rune 32; we could use fileInput := make(map[rune][]string) with slight changes to code elsewhere; there are 95 characters to print (dec value 32 - 126 in ascii manual)
+	count := 32          // In ascii manual (man ascii in terminal) integer 32 (decimal value) represents space (line 2 to 9 in standard.txt file); the first character is rune 32 (decimal value 32 - space); we could use fileInput := make(map[rune][]string) with slight changes to code elsewhere; there are 95 characters to print (dec value 32 - 126 in ascii manual)
+	countLines := 0
 	for scanner.Scan() { // Scans the variable named scanner
-		fileInput[count] = append(fileInput[count], scanner.Text()) // fileInput = append(fileInput, scanner.Text()) - we cannot append to a map but we can append to slices; fileInput is of type map[int][]string
+		emptySlice = append(emptySlice, scanner.Text())
+		countLines++
+		if countLines == 9 { // If nine lines have been read
+			fileInput[count] = emptySlice
+			count++
+			emptySlice = []string{} // We can also use emptySlice = nil
+			countLines = 0
+		}	
 	}
-	fmt.Println(fileInput[32][0])
-	fmt.Println(fileInput[32][1])
+	// fmt.Println(len(fileInput[34]))
+
+// fmt.Println(string(fileInput[34][2]) + fileInput[32][2])
+// fmt.Println(string(fileInput[34][3]) + fileInput[32][3])
+
+for i := 0; i <9 ; i++{
+	fmt.Println(string(fileInput[34][i]) + fileInput[32][i])
+}
+
+
+	// for _, el := range fileInput[34] {
+	// 	fmt.Println(el)
+	// }
+		
+	
+	
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	//}
+	// for i, v := range fileInput[count+1] {
+	// 	if i < 9 {
+	// 	fmt.Println(i, v)
+	// 	}
+	// fmt.Println(fileInput[count][0])
+	// fmt.Println(fileInput[count][1])
+	// fmt.Println(fileInput[count][2])
 	return fileInput
 }
 
-// 	//QUESTIONS:
-// // If we are using fileInput := make(map[int][]string) and therefore have a map, why would var emptySlice []string be required? Can't we just print strings to a nil map instead?
-// // Is return fileInput on line 32 required?
-// // Is func ReadFile() map[int][]string with return fileInput required? What's the difference?
 // 	for _, convertRune := range userInput { // Creates a for range loop based on user input; by default when iterating over a string, we obtain value as a rune
 // 		emptySlice = append(emptySlice, string(convertRune)) // Casting individual characters (runes) to a string then appending to a slice of string
 // 	}
