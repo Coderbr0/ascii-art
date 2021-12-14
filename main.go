@@ -27,30 +27,41 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 		if countLines == 9 { // If nine lines have been read
 			fileInput[count] = emptySliceToFill
 			count++
-			emptySliceToFill = []string{} // We can also use emptySliceToFill = nil
+			emptySliceToFill = []string{} // We can also use emptySliceToFill = nil; reset emptySliceToFill to zero after nine lines have been counted
 			countLines = 0
 		}
 	}
-	// fmt.Println(len(fileInput[34]))
+	
+	
+// 	fmt.Println(string(fileInput[104][0]) + fileInput[101][0] + fileInput[108][0] + fileInput[108][0] + fileInput[111][0])
+// 	fmt.Println(string(fileInput[104][1]) + fileInput[101][1] + fileInput[108][1] + fileInput[108][1] + fileInput[111][1])
+// 	fmt.Println(string(fileInput[104][2]) + fileInput[101][2] + fileInput[108][2] + fileInput[108][2] + fileInput[111][2])
+// 	fmt.Println(string(fileInput[104][3]) + fileInput[101][3] + fileInput[108][3] + fileInput[108][3] + fileInput[111][3])
+// 	fmt.Println(string(fileInput[104][4]) + fileInput[101][4] + fileInput[108][4] + fileInput[108][4] + fileInput[111][4])
+// 	fmt.Println(string(fileInput[104][5]) + fileInput[101][5] + fileInput[108][5] + fileInput[108][5] + fileInput[111][5])
+// 	fmt.Println(string(fileInput[104][6]) + fileInput[101][6] + fileInput[108][6] + fileInput[108][6] + fileInput[111][6])
+// 	fmt.Println(string(fileInput[104][7]) + fileInput[101][7] + fileInput[108][7] + fileInput[108][7] + fileInput[111][7])
+// 	fmt.Println(string(fileInput[104][8]) + fileInput[101][8] + fileInput[108][8] + fileInput[108][8] + fileInput[111][8])
 
-// fmt.Println(string(fileInput[34][2]) + fileInput[32][2])
-// fmt.Println(string(fileInput[34][3]) + fileInput[32][3])
-for i := 0; i < 9 ; i++ {
-	fmt.Println(string(fileInput[34][i]) + fileInput[33][i])
-}
+// 	// fmt.Println(fileInput[33])
+// 	// fmt.Println(len(fileInput[34]))
+
+// // fmt.Println(string(fileInput[34][2]) + fileInput[32][2])
+// // fmt.Println(string(fileInput[34][3]) + fileInput[32][3])
+// for i := 0; i < 9 ; i++ {
+// 	fmt.Println(string(fileInput[34][i]) + fileInput[33][i])
+// }
 
 
-	// for _, el := range fileInput[34] {
-	// 	fmt.Println(el)
+	// for i, el := range fileInput[33] {
+	// 	fmt.Println(i, el)
 	// }
 	//}
 	// for i, v := range fileInput[count+1] {
 	// 	if i < 9 {
 	// 	fmt.Println(i, v)
 	// 	}
-	// fmt.Println(fileInput[count][0])
-	// fmt.Println(fileInput[count][1])
-	// fmt.Println(fileInput[count][2])
+	
 	return fileInput
 }
 
