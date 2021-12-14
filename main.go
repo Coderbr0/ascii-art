@@ -31,17 +31,28 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 			countLines = 0
 		}
 	}
+	argument := os.Args[1]
+	fmt.Println(argument)
+	fmt.Println(string(fileInput[104][0]) + fileInput[101][0] + fileInput[108][0] + fileInput[108][0] + fileInput[111][0])
+	fmt.Println(string(fileInput[104][1]) + fileInput[101][1] + fileInput[108][1] + fileInput[108][1] + fileInput[111][1])
+	fmt.Println(string(fileInput[104][2]) + fileInput[101][2] + fileInput[108][2] + fileInput[108][2] + fileInput[111][2])
+	fmt.Println(string(fileInput[104][3]) + fileInput[101][3] + fileInput[108][3] + fileInput[108][3] + fileInput[111][3])
+	fmt.Println(string(fileInput[104][4]) + fileInput[101][4] + fileInput[108][4] + fileInput[108][4] + fileInput[111][4])
+	fmt.Println(string(fileInput[104][5]) + fileInput[101][5] + fileInput[108][5] + fileInput[108][5] + fileInput[111][5])
+	fmt.Println(string(fileInput[104][6]) + fileInput[101][6] + fileInput[108][6] + fileInput[108][6] + fileInput[111][6])
+	fmt.Println(string(fileInput[104][7]) + fileInput[101][7] + fileInput[108][7] + fileInput[108][7] + fileInput[111][7])
+	fmt.Println(string(fileInput[104][8]) + fileInput[101][8] + fileInput[108][8] + fileInput[108][8] + fileInput[111][8])
 	
 	
-// 	fmt.Println(string(fileInput[104][0]) + fileInput[101][0] + fileInput[108][0] + fileInput[108][0] + fileInput[111][0])
-// 	fmt.Println(string(fileInput[104][1]) + fileInput[101][1] + fileInput[108][1] + fileInput[108][1] + fileInput[111][1])
-// 	fmt.Println(string(fileInput[104][2]) + fileInput[101][2] + fileInput[108][2] + fileInput[108][2] + fileInput[111][2])
-// 	fmt.Println(string(fileInput[104][3]) + fileInput[101][3] + fileInput[108][3] + fileInput[108][3] + fileInput[111][3])
-// 	fmt.Println(string(fileInput[104][4]) + fileInput[101][4] + fileInput[108][4] + fileInput[108][4] + fileInput[111][4])
-// 	fmt.Println(string(fileInput[104][5]) + fileInput[101][5] + fileInput[108][5] + fileInput[108][5] + fileInput[111][5])
-// 	fmt.Println(string(fileInput[104][6]) + fileInput[101][6] + fileInput[108][6] + fileInput[108][6] + fileInput[111][6])
-// 	fmt.Println(string(fileInput[104][7]) + fileInput[101][7] + fileInput[108][7] + fileInput[108][7] + fileInput[111][7])
-// 	fmt.Println(string(fileInput[104][8]) + fileInput[101][8] + fileInput[108][8] + fileInput[108][8] + fileInput[111][8])
+	// fmt.Println(string(fileInput[104][0]) + fileInput[101][0] + fileInput[108][0] + fileInput[108][0] + fileInput[111][0])
+	// fmt.Println(string(fileInput[104][1]) + fileInput[101][1] + fileInput[108][1] + fileInput[108][1] + fileInput[111][1])
+	// fmt.Println(string(fileInput[104][2]) + fileInput[101][2] + fileInput[108][2] + fileInput[108][2] + fileInput[111][2])
+	// fmt.Println(string(fileInput[104][3]) + fileInput[101][3] + fileInput[108][3] + fileInput[108][3] + fileInput[111][3])
+	// fmt.Println(string(fileInput[104][4]) + fileInput[101][4] + fileInput[108][4] + fileInput[108][4] + fileInput[111][4])
+	// fmt.Println(string(fileInput[104][5]) + fileInput[101][5] + fileInput[108][5] + fileInput[108][5] + fileInput[111][5])
+	// fmt.Println(string(fileInput[104][6]) + fileInput[101][6] + fileInput[108][6] + fileInput[108][6] + fileInput[111][6])
+	// fmt.Println(string(fileInput[104][7]) + fileInput[101][7] + fileInput[108][7] + fileInput[108][7] + fileInput[111][7])
+	// fmt.Println(string(fileInput[104][8]) + fileInput[101][8] + fileInput[108][8] + fileInput[108][8] + fileInput[111][8])
 
 // 	// fmt.Println(fileInput[33])
 // 	// fmt.Println(len(fileInput[34]))
