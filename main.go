@@ -25,8 +25,8 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 		emptySliceToFill = append(emptySliceToFill, scanner.Text())
 		countLines++
 		if countLines == 9 { // If nine lines have been read
-			fileInput[count] = emptySliceToFill
-			count++
+			fileInput[count] = emptySliceToFill // Assigning this emptySliceToFill to map[32]
+			count++ // count = count + 1; 33
 			emptySliceToFill = []string{} // We can also use emptySliceToFill = nil; reset emptySliceToFill to zero after nine lines have been counted
 			countLines = 0
 		}
