@@ -11,28 +11,28 @@ func main() {
 }
 
 func ReadFile() map[int][]string { // We want to return a map for simplicity
-	var emptySliceToFill []string // Declaring an empty slice of string to use; we can then append to it later
-	fileInput := make(map[int][]string) // Alternative syntax: var fileInput map[int][]string
-	file, err := os.Open(os.Args[1])    // go run main.go standard.txt; standard.txt would be 1st argument in this case; alternatively we can use file, err := os.Open("standard.txt")
+	var emptySliceToFill []string        // Declaring an empty slice of string to use; we can then append to it later
+	fileInput := make(map[int][]string)  // Alternative syntax: var fileInput map[int][]string
+	file, err := os.Open("standard.txt") // file, err := os.Open("os.Args[1]") => e.g. go run main.go standard.txt; standard.txt would be 1st argument in this case
 	if err != nil {
 		fmt.Println("Invalid input. The named file does not exist.")
 	}
 	defer file.Close()                // To close file is good practice; defer allows for all operations to be carried out before closing file
 	scanner := bufio.NewScanner(file) // Scans the file and calls it "scanner"
-	count := 32          // In ascii manual (man ascii in terminal) integer 32 (decimal value) represents space (line 2 to 9 in standard.txt file); the first character is rune 32 (decimal value 32 - space); we could use fileInput := make(map[rune][]string) with slight changes to code elsewhere; there are 95 characters to print (dec value 32 - 126 in ascii manual)
+	count := 32                       // In ascii manual (man ascii in terminal) integer 32 (decimal value) represents space (line 2 to 9 in standard.txt file); the first character is rune 32 (decimal value 32 - space); we could use fileInput := make(map[rune][]string) with slight changes to code elsewhere; there are 95 characters to print (dec value 32 - 126 in ascii manual)
 	countLines := 0
 	for scanner.Scan() { // Scans the variable named scanner
 		emptySliceToFill = append(emptySliceToFill, scanner.Text())
 		countLines++
 		if countLines == 9 { // If nine lines have been read
 			fileInput[count] = emptySliceToFill // Assigning this emptySliceToFill to map[32]
-			count++ // count = count + 1; 33
-			emptySliceToFill = []string{} // We can also use emptySliceToFill = nil; reset emptySliceToFill to zero after nine lines have been counted
+			count++                             // count = count + 1; 33
+			emptySliceToFill = []string{}       // We can also use emptySliceToFill = nil; reset emptySliceToFill to zero after nine lines have been counted
 			countLines = 0
 		}
 	}
-	argument := os.Args[1]
-	fmt.Println(argument)
+	// argument := os.Args[1]
+	// fmt.Println(argument)
 	fmt.Println(string(fileInput[104][0]) + fileInput[101][0] + fileInput[108][0] + fileInput[108][0] + fileInput[111][0])
 	fmt.Println(string(fileInput[104][1]) + fileInput[101][1] + fileInput[108][1] + fileInput[108][1] + fileInput[111][1])
 	fmt.Println(string(fileInput[104][2]) + fileInput[101][2] + fileInput[108][2] + fileInput[108][2] + fileInput[111][2])
@@ -42,8 +42,7 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	fmt.Println(string(fileInput[104][6]) + fileInput[101][6] + fileInput[108][6] + fileInput[108][6] + fileInput[111][6])
 	fmt.Println(string(fileInput[104][7]) + fileInput[101][7] + fileInput[108][7] + fileInput[108][7] + fileInput[111][7])
 	fmt.Println(string(fileInput[104][8]) + fileInput[101][8] + fileInput[108][8] + fileInput[108][8] + fileInput[111][8])
-	
-	
+
 	// fmt.Println(string(fileInput[104][0]) + fileInput[101][0] + fileInput[108][0] + fileInput[108][0] + fileInput[111][0])
 	// fmt.Println(string(fileInput[104][1]) + fileInput[101][1] + fileInput[108][1] + fileInput[108][1] + fileInput[111][1])
 	// fmt.Println(string(fileInput[104][2]) + fileInput[101][2] + fileInput[108][2] + fileInput[108][2] + fileInput[111][2])
@@ -54,15 +53,14 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	// fmt.Println(string(fileInput[104][7]) + fileInput[101][7] + fileInput[108][7] + fileInput[108][7] + fileInput[111][7])
 	// fmt.Println(string(fileInput[104][8]) + fileInput[101][8] + fileInput[108][8] + fileInput[108][8] + fileInput[111][8])
 
-// 	// fmt.Println(fileInput[33])
-// 	// fmt.Println(len(fileInput[34]))
+	// 	// fmt.Println(fileInput[33])
+	// 	// fmt.Println(len(fileInput[34]))
 
-// // fmt.Println(string(fileInput[34][2]) + fileInput[32][2])
-// // fmt.Println(string(fileInput[34][3]) + fileInput[32][3])
-// for i := 0; i < 9 ; i++ {
-// 	fmt.Println(string(fileInput[34][i]) + fileInput[33][i])
-// }
-
+	// // fmt.Println(string(fileInput[34][2]) + fileInput[32][2])
+	// // fmt.Println(string(fileInput[34][3]) + fileInput[32][3])
+	// for i := 0; i < 9 ; i++ {
+	// 	fmt.Println(string(fileInput[34][i]) + fileInput[33][i])
+	// }
 
 	// for i, el := range fileInput[33] {
 	// 	fmt.Println(i, el)
@@ -72,7 +70,7 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	// 	if i < 9 {
 	// 	fmt.Println(i, v)
 	// 	}
-	
+
 	return fileInput
 }
 
