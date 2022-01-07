@@ -6,9 +6,38 @@ import (
 	"os"
 )
 
-func main() {
-	ReadFile()
-}
+func main2() {
+	var noOfArgs int = 0
+	var arguments []string
+	var inputStr string
+
+	arguments = os.Args
+	noOfArgs = len(arguments)
+	inputStr = arguments[1]
+	fmt.Println("Input String:", inputStr, "; Number of Arguments:", noOfArgs)
+
+	switch noOfArgs {
+	case 0:
+		fmt.Println("Error: No Arguments.")
+		return
+	case 1:
+		fmt.Println("Error: No Arguments.")
+		return
+	case 2:
+		/*Correct Number of Arguments, so we can continue.*/
+		fmt.Println("Correct number of Arguments.")
+		ReadFile()
+		return
+	case 3:
+		fmt.Println("Error: There is one and only one argument allowed - a", "\"string inside quotes\"")
+	case 4:
+		fmt.Println("Error: There is one and only one argument allowed - a", "\"string inside quotes\"")
+	default:
+		/*Too many arguments*/
+		fmt.Println("Error: Too many Arguments.")
+		return
+	} /*switch*/
+} /*main*/
 
 func ReadFile() map[int][]string { // We want to return a map for simplicity
 	var emptySliceToFill []string        // Declaring an empty slice of string to use; we can then append to it later
@@ -33,15 +62,6 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	}
 	// argument := os.Args[1]
 	// fmt.Println(argument)
-	fmt.Println(string(fileInput[104][0]) + fileInput[101][0] + fileInput[108][0] + fileInput[108][0] + fileInput[111][0])
-	fmt.Println(string(fileInput[104][1]) + fileInput[101][1] + fileInput[108][1] + fileInput[108][1] + fileInput[111][1])
-	fmt.Println(string(fileInput[104][2]) + fileInput[101][2] + fileInput[108][2] + fileInput[108][2] + fileInput[111][2])
-	fmt.Println(string(fileInput[104][3]) + fileInput[101][3] + fileInput[108][3] + fileInput[108][3] + fileInput[111][3])
-	fmt.Println(string(fileInput[104][4]) + fileInput[101][4] + fileInput[108][4] + fileInput[108][4] + fileInput[111][4])
-	fmt.Println(string(fileInput[104][5]) + fileInput[101][5] + fileInput[108][5] + fileInput[108][5] + fileInput[111][5])
-	fmt.Println(string(fileInput[104][6]) + fileInput[101][6] + fileInput[108][6] + fileInput[108][6] + fileInput[111][6])
-	fmt.Println(string(fileInput[104][7]) + fileInput[101][7] + fileInput[108][7] + fileInput[108][7] + fileInput[111][7])
-	fmt.Println(string(fileInput[104][8]) + fileInput[101][8] + fileInput[108][8] + fileInput[108][8] + fileInput[111][8])
 
 	// fmt.Println(string(fileInput[104][0]) + fileInput[101][0] + fileInput[108][0] + fileInput[108][0] + fileInput[111][0])
 	// fmt.Println(string(fileInput[104][1]) + fileInput[101][1] + fileInput[108][1] + fileInput[108][1] + fileInput[111][1])
@@ -53,11 +73,11 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	// fmt.Println(string(fileInput[104][7]) + fileInput[101][7] + fileInput[108][7] + fileInput[108][7] + fileInput[111][7])
 	// fmt.Println(string(fileInput[104][8]) + fileInput[101][8] + fileInput[108][8] + fileInput[108][8] + fileInput[111][8])
 
-	// 	// fmt.Println(fileInput[33])
-	// 	// fmt.Println(len(fileInput[34]))
+	// fmt.Println(fileInput[33])
+	// fmt.Println(len(fileInput[34]))
 
-	// // fmt.Println(string(fileInput[34][2]) + fileInput[32][2])
-	// // fmt.Println(string(fileInput[34][3]) + fileInput[32][3])
+	// fmt.Println(string(fileInput[34][2]) + fileInput[32][2])
+	// fmt.Println(string(fileInput[34][3]) + fileInput[32][3])
 	// for i := 0; i < 9 ; i++ {
 	// 	fmt.Println(string(fileInput[34][i]) + fileInput[33][i])
 	// }
