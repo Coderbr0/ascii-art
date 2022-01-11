@@ -6,41 +6,43 @@ import (
 	"os"
 )
 
-func main2() {
+func main() {
 	var noOfArgs int = 0
 	var arguments []string
 	var inputStr string
 
 	arguments = os.Args
 	noOfArgs = len(arguments)
-	inputStr = arguments[1]
-	fmt.Println("Input String:", inputStr, "; Number of Arguments:", noOfArgs)
 
 	switch noOfArgs {
-	case 0:
-		fmt.Println("Error: No Arguments.")
-		return
+	case 0: // case 0 may be used in IPC (inter-process communication) and Unix pipes e.g. go run . "Hello\n" | cat -e; | is used to combine two or more commands and allows them to operate simultaneously and permits data to be transferred between them; with cat -e "$" shows at the end of the line and useful to squeeze multiple lines into a single line
+		fmt.Println("Error: No arguments.")
+		return // return so that switch statement doesn't continue to the next case
 	case 1:
-		fmt.Println("Error: No Arguments.")
+		fmt.Println("Error: No arguments.")
 		return
 	case 2:
-		/*Correct Number of Arguments, so we can continue.*/
-		fmt.Println("Correct number of Arguments.")
+		/*Correct number of arguments, so we can continue.*/
+		inputStr = arguments[1]
+		fmt.Println("Input string:", inputStr+";", "Number of arguments:", noOfArgs)
+		fmt.Println("Correct number of arguments.")
 		ReadFile()
 		return
 	case 3:
-		fmt.Println("Error: There is one and only one argument allowed - a", "\"string inside quotes\"")
+		fmt.Println("Error: There is only one argument allowed - \"a string inside quotes\"")
+		return
 	case 4:
-		fmt.Println("Error: There is one and only one argument allowed - a", "\"string inside quotes\"")
+		fmt.Println("Error: There is only one argument allowed - \"a string inside quotes\"")
+		return
 	default:
 		/*Too many arguments*/
-		fmt.Println("Error: Too many Arguments.")
+		fmt.Println("Error: Too many arguments.")
 		return
 	} /*switch*/
 } /*main*/
 
 func ReadFile() map[int][]string { // We want to return a map for simplicity
-	var emptySliceToFill []string        // Declaring an empty slice of string to use; we can then append to it later
+	var emptySliceToFill []string // Declaring an empty slice of string to use; we can then append to it later
 	fileInput := make(map[int][]string)  // Alternative syntax: var fileInput map[int][]string
 	file, err := os.Open("standard.txt") // file, err := os.Open("os.Args[1]") => e.g. go run main.go standard.txt; standard.txt would be 1st argument in this case
 	if err != nil {
@@ -60,6 +62,9 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 			countLines = 0
 		}
 	}
+	fmt.Println("File input map:", fileInput) 
+	// Note: currently mapping 32 to whole standard text. We want 32 to space only and 33 to "!" etc
+
 	// argument := os.Args[1]
 	// fmt.Println(argument)
 
