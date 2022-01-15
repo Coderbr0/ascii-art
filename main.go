@@ -10,7 +10,9 @@ func main() {
 	var noOfArgs int = 0
 	var arguments []string
 	var inputStr string
-
+	
+	outputAscii()
+	
 	arguments = os.Args
 	noOfArgs = len(arguments)
 
@@ -23,7 +25,7 @@ func main() {
 		return
 	case 2:
 		/*Correct number of arguments, so we can continue.*/
-		inputStr = arguments[1]
+		inputStr = arguments[1] // This reads what you input on the terminal as first argument	
 		fmt.Println("Input string:", inputStr+";", "Number of arguments:", noOfArgs)
 		fmt.Println("Correct number of arguments.")
 		ReadFile()
@@ -42,7 +44,7 @@ func main() {
 } /*main*/
 
 func ReadFile() map[int][]string { // We want to return a map for simplicity
-	var emptySliceToFill []string // Declaring an empty slice of string to use; we can then append to it later
+	var emptySliceToFill []string        // Declaring an empty slice of string to use; we can then append to it later
 	fileInput := make(map[int][]string)  // Alternative syntax: var fileInput map[int][]string
 	file, err := os.Open("standard.txt") // file, err := os.Open("os.Args[1]") => e.g. go run main.go standard.txt; standard.txt would be 1st argument in this case
 	if err != nil {
@@ -58,11 +60,29 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 		if countLines == 9 { // If nine lines have been read
 			fileInput[count] = emptySliceToFill // Assigning this emptySliceToFill to map[32]
 			count++                             // count = count + 1; 33
+			// fmt.Println(emptySliceToFill)
 			emptySliceToFill = []string{}       // We can also use emptySliceToFill = nil; reset emptySliceToFill to zero after nine lines have been counted
 			countLines = 0
 		}
 	}
-	fmt.Println("File input map:", fileInput) 
+	return fileInput
+}
+
+func outputAscii() {
+	var showAscii map[int][]string = ReadFile()
+	fmt.Println(showAscii)
+	fmt.Println(showAscii[104][0])
+	fmt.Println(showAscii[104][1])
+	fmt.Println(showAscii[104][2])
+	fmt.Println(showAscii[104][3])
+	fmt.Println(showAscii[104][4])
+	fmt.Println(showAscii[104][5])
+	fmt.Println(showAscii[104][6])
+	fmt.Println(showAscii[104][7])
+	fmt.Println(showAscii[104][8])
+}
+	
+	// fmt.Println("File input map:", fileInput)
 	// Note: currently mapping 32 to whole standard text. We want 32 to space only and 33 to "!" etc
 
 	// argument := os.Args[1]
@@ -96,8 +116,7 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 	// 	fmt.Println(i, v)
 	// 	}
 
-	return fileInput
-}
+
 
 /*
 package main
