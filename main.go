@@ -68,11 +68,6 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 			countLines = 0
 		}
 	}
-	for i, v := range fileInput[count] {
-		if i < 9 {
-		fmt.Println(i, v)
-		}
-	}
 	return fileInput
 }
 
@@ -92,7 +87,12 @@ func outputAscii() {
 	for i := 0; i < 9 ; i++ {
 		fmt.Println(showAscii[104][i] + showAscii[33][i])
 	}
-
+	
+	// for i, v := range showAscii[count+1] {
+	// 	if i < 9 {
+	// 	fmt.Println(i, v)
+	// 	}
+	// }
 	
 	// See below: why are we casting to a string?
 	
