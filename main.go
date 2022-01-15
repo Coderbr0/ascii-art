@@ -12,6 +12,9 @@ func main() {
 	var inputStr string
 	
 	outputAscii()
+
+	argument := os.Args[1]
+	fmt.Println(argument)
 	
 	arguments = os.Args
 	noOfArgs = len(arguments)
@@ -70,7 +73,7 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 
 func outputAscii() {
 	var showAscii map[int][]string = ReadFile()
-	fmt.Println(showAscii)
+	fmt.Println("Show ascii map:", showAscii)
 	fmt.Println(showAscii[104][0])
 	fmt.Println(showAscii[104][1])
 	fmt.Println(showAscii[104][2])
@@ -80,43 +83,36 @@ func outputAscii() {
 	fmt.Println(showAscii[104][6])
 	fmt.Println(showAscii[104][7])
 	fmt.Println(showAscii[104][8])
-}
+
+	for i := 0; i < 9 ; i++ {
+		fmt.Println(showAscii[104][i] + showAscii[33][i])
+	}
+
+	// See below: why are we casting to a string?
 	
-	// fmt.Println("File input map:", fileInput)
-	// Note: currently mapping 32 to whole standard text. We want 32 to space only and 33 to "!" etc
+	// fmt.Println(string(showAscii[104][0]) + showAscii[101][0] + showAscii[108][0] + showAscii[108][0] + showAscii[111][0])
+	// fmt.Println(string(showAscii[104][1]) + showAscii[101][1] + showAscii[108][1] + showAscii[108][1] + showAscii[111][1])
+	// fmt.Println(string(showAscii[104][2]) + showAscii[101][2] + showAscii[108][2] + showAscii[108][2] + showAscii[111][2])
+	// fmt.Println(string(showAscii[104][3]) + showAscii[101][3] + showAscii[108][3] + showAscii[108][3] + showAscii[111][3])
+	// fmt.Println(string(showAscii[104][4]) + showAscii[101][4] + showAscii[108][4] + showAscii[108][4] + showAscii[111][4])
+	// fmt.Println(string(showAscii[104][5]) + showAscii[101][5] + showAscii[108][5] + showAscii[108][5] + showAscii[111][5])
+	// fmt.Println(string(showAscii[104][6]) + showAscii[101][6] + showAscii[108][6] + showAscii[108][6] + showAscii[111][6])
+	// fmt.Println(string(showAscii[104][7]) + showAscii[101][7] + showAscii[108][7] + showAscii[108][7] + showAscii[111][7])
+	// fmt.Println(string(showAscii[104][8]) + showAscii[101][8] + showAscii[108][8] + showAscii[108][8] + showAscii[111][8])
 
-	// argument := os.Args[1]
-	// fmt.Println(argument)
+	// fmt.Println(showAscii[33])
+	// fmt.Println(len(showAscii[33]))
 
-	// fmt.Println(string(fileInput[104][0]) + fileInput[101][0] + fileInput[108][0] + fileInput[108][0] + fileInput[111][0])
-	// fmt.Println(string(fileInput[104][1]) + fileInput[101][1] + fileInput[108][1] + fileInput[108][1] + fileInput[111][1])
-	// fmt.Println(string(fileInput[104][2]) + fileInput[101][2] + fileInput[108][2] + fileInput[108][2] + fileInput[111][2])
-	// fmt.Println(string(fileInput[104][3]) + fileInput[101][3] + fileInput[108][3] + fileInput[108][3] + fileInput[111][3])
-	// fmt.Println(string(fileInput[104][4]) + fileInput[101][4] + fileInput[108][4] + fileInput[108][4] + fileInput[111][4])
-	// fmt.Println(string(fileInput[104][5]) + fileInput[101][5] + fileInput[108][5] + fileInput[108][5] + fileInput[111][5])
-	// fmt.Println(string(fileInput[104][6]) + fileInput[101][6] + fileInput[108][6] + fileInput[108][6] + fileInput[111][6])
-	// fmt.Println(string(fileInput[104][7]) + fileInput[101][7] + fileInput[108][7] + fileInput[108][7] + fileInput[111][7])
-	// fmt.Println(string(fileInput[104][8]) + fileInput[101][8] + fileInput[108][8] + fileInput[108][8] + fileInput[111][8])
-
-	// fmt.Println(fileInput[33])
-	// fmt.Println(len(fileInput[34]))
-
-	// fmt.Println(string(fileInput[34][2]) + fileInput[32][2])
-	// fmt.Println(string(fileInput[34][3]) + fileInput[32][3])
-	// for i := 0; i < 9 ; i++ {
-	// 	fmt.Println(string(fileInput[34][i]) + fileInput[33][i])
-	// }
-
-	// for i, el := range fileInput[33] {
+	// for i, el := range showAscii[33] {
 	// 	fmt.Println(i, el)
 	// }
-	//}
-	// for i, v := range fileInput[count+1] {
+
+	// for i, v := range showAscii[count+1] {
 	// 	if i < 9 {
 	// 	fmt.Println(i, v)
 	// 	}
 
-
+}
 
 /*
 package main
