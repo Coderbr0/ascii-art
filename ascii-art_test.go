@@ -11,7 +11,7 @@ import (
 )
 
 /*	Each key of the map testCases contains the name of the file containing the
-	expected out put for each test case, the value for each key is a slice of
+	expected output for each test case, the value for each key is a slice of
 	strings, the first element contains the string to be given as an argument
 	at run time, the second will contain the string equivalent of expected
 	output	*/
@@ -41,7 +41,7 @@ func TestAsciiArt(t *testing.T) {
 
 	/*	Iterate through each test case and starting a goroutine for each, this
 		is done so instead of waiting for the previous test to complete they can
-		all be checked simulaneously	*/
+		all be checked simultaneously	*/
 	var wg sync.WaitGroup
 	for i := 1; i <= len(testCases); i++ {
 		wg.Add(1)
@@ -61,7 +61,7 @@ func TestAsciiArt(t *testing.T) {
 }
 
 /*	This function imitates the running of "go run . string", which it then pipes
-	into a second function "cat -e" to immitate and then returns the result	*/
+	into a second function "cat -e" to imitate and then returns the result	*/
 func getResult(testCase []string) string {
 	first := exec.Command("go", "run", ".", testCase[0])
 	second := exec.Command("cat", "-e")

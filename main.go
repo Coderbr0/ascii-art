@@ -9,7 +9,7 @@ import (
 
 func main() {
 	if len(os.Args) == 2 {
-		outputAscii(ReadFile(), os.Args[1])
+		outputAscii(ReadFile(), os.Args[1]) // ReadFile() is passed into asciiMap map[int][]string and os.Args[1] is passed into input string in parameter of outputAscii function
 	} else {
 		fmt.Println("Error: Wrong amount of arguments.")
 	}
@@ -36,13 +36,13 @@ func ReadFile() map[int][]string { // We want to return a map for simplicity
 }
 
 func outputAscii(asciiMap map[int][]string, input string) {
-	inputSlice := strings.Split(input, "\\n") // Hello World - 2 different elements in slice (splitting by new line)
-	for _, input = range inputSlice {         // Hello World
+	inputSlice := strings.Split(input, "\\n") // Takes input e.g. "Hello\nWorld" and converts to slice. In this case, we have two elements (words) in slice (splitting by new line)
+	for _, input = range inputSlice {         // Range over inputSlice (Hello World) word by word
 		for i := 0; i < 8; i++ { // Iterates through 8 lines as that's how many lines there are for each ascii character
-			for _, inputChar := range input { // H e l l o W o r l d
-				fmt.Print(asciiMap[int(inputChar)][i])
+			for _, inputChar := range input { // Range over input (H e l l o W o r l d) character by character
+				fmt.Print(asciiMap[int(inputChar)][i]) // Casting inputChar (rune) to int as our map key is int; [i] print by index
 			}
-			fmt.Println() // Alternative: fmt.Println("")
+			fmt.Println() // Alternative: fmt.Println(""); print new line is required so that characters are printed properly as opposed to on one line e.g. go run . "a" =>  / _` | | (_| |  \__,_|
 		}
 	}
 }
